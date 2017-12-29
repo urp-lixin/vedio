@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<mvc>
+  <profile name="yushang.website.vod.project" package="com.yushang.website.vod.web.action">
+    <url path="/" suffix="" style="seo" />
+    <interceptors>
+      <interceptor name="web.Interceptor.hibernate" />
+    </interceptors>
+  </profile>
+</mvc>

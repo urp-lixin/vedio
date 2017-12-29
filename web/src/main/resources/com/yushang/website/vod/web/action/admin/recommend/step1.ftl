@@ -1,0 +1,11 @@
+[@b.head/]
+  [@b.toolbar title="推荐视频-添加-<span style=\"color:blue\">第1步：选择视频所属栏目</span>"]
+    bar.addBack();
+  [/@]
+  [@b.form name="recommendFirstStepForm" action="!video" target="recommends" theme="list"]
+    [@b.select label="视频栏目" name="navId" items=navs style="width: 200px"/]
+    [@b.formfoot]
+      [@b.submit value="下一步"/]
+    [/@]
+  [/@]
+[@b.foot/]

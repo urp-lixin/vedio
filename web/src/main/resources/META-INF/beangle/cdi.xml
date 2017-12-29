@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<cdi>
+  <container name="web">
+    <module class="com.yushang.website.vod.web.DefaultModule"/>
+    <module class="com.yushang.website.vod.web.action.admin.DefaultModule"/>
+  </container>
+  <container>
+    <module class="com.yushang.website.DaoModule"/>
+  </container>
+</cdi>
