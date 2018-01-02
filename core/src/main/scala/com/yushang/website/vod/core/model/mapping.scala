@@ -7,14 +7,15 @@ class DefaultMapping extends MappingModule {
   def binding(): Unit = {
     defaultIdGenerator("auto_increment")
 
-    bind[Master]
+    bind[Master].on(e => declare(
+      e.resourceDir is length(100)))
 
     bind[Nav]
 
     bind[Video]
 
     bind[VideoStat].on(e => declare(
-        e.statInfoes is depends("videoStat")))
+      e.statInfoes is depends("videoStat")))
 
     bind[VideoStatInfo]
 

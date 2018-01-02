@@ -2,7 +2,6 @@ package com.yushang.website.vod.web.action.admin
 
 import java.io.{ ByteArrayInputStream, File, FileInputStream }
 
-import org.apache.catalina.core.ApplicationPart
 import org.beangle.commons.collection.Collections
 import org.beangle.commons.lang.Strings
 import org.beangle.data.dao.OqlBuilder
@@ -13,6 +12,7 @@ import org.beangle.webmvc.execution.Handler
 import org.springframework.util.FileCopyUtils
 
 import com.yushang.website.vod.core.model.{ Nav, Video }
+import javax.servlet.http.Part
 
 class VideoAction extends VodBackSupport[Video] with ServletSupport {
 
@@ -28,7 +28,7 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
   def imageUpload(): View = {
     val name = System.currentTimeMillis() + ""
 
-    get("image", classOf[ApplicationPart]) match {
+    get("image", classOf[Part]) match {
       case Some(part) =>
         val image: File = new File(master.resourceDir + "/temp/" + name)
         if (image.getParentFile.exists()) {
@@ -71,7 +71,7 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
   def videoUpload(): View = {
     val name = System.currentTimeMillis() + ""
 
-    get("video", classOf[ApplicationPart]) match {
+    get("video", classOf[Part]) match {
       case Some(part) =>
         val video: File = new File(master.resourceDir + "/temp/" + name)
         if (video.getParentFile.exists()) {
