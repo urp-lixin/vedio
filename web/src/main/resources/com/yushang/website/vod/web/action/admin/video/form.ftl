@@ -35,28 +35,12 @@
         return document.getElementById("imageNone") && document.getElementById("imageNone").innerHTML;
       }, "请填设图片");
     [/@]
-    [@b.field label="视频" required="true"]
-      <table>
-        <tr>
-        [#if video.persisted]
-          <td id="videoNone">
-            <video src="${base}/admin/video/video/${video.id}" width="85" height="85" controls="controls" title="${video.videoName}"/>
-            <div>${video.videoName}</div>
-            <input type="hidden" name="video.videoName" value="${video.videoName}"/>
-            <input type="hidden" name="video.videoUrl" value="${video.videoUrl}"/>
-          </td>
-        [/#if]
-          <td><input type="file" name="video" accept=".ogg, .mp4, .webm"/></td>
-          <td><input id="video_" type="hidden"/></td>[#--仅为了验证--]
-          <td>仅支持ogg、mp4、webm几种视频</td>
-        </tr>
-      </table>
+    [@b.textfield label="视频名称" name="video.videoName" value=(video.videoName)! required="true" maxlength="1000" style=styleHTML comment="请将该视频放到服务器video文件夹下"/]
+    [#if video.persisted]
+    [@b.field label="视频"]
+       <video src="${base}/admin/video/video/${video.id}" width="85" height="85" controls="controls" title="${video.videoName}"/>
     [/@]
-    [@b.validity]
-      $("#video_", document.videoForm).assert(function() {
-        return document.getElementById("videoNone") && document.getElementById("videoNone").innerHTML;
-      }, "请填设视频");
-    [/@]
+    [/#if]
     [@b.datepicker label="发布日期" name="video.publishedAt" value=(video.publishedAt?string("yyyy-MM-dd"))! required="true" style=styleHTML/]
     [@b.textfield label="优先级" name="video.indexNo" value=(video.indexNo)! required="true" maxlength="100" check="match('integer').greaterThan(0)" style=styleHTML/]
     [@b.formfoot]

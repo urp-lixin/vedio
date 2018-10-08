@@ -108,8 +108,8 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
   def video(@param("id") id: String): View = {
     val video = entityDao.get(classOf[Video], id.toLong)
     val urlSections = Strings.split(video.videoName, ".")
-//    Stream(new ByteArrayInputStream(FileCopyUtils.copyToByteArray(new File(master.resourceDir + "/" + video.videoUrl))), "video/" + urlSections(urlSections.length - 1), video.videoName)
-    
+    //    Stream(new ByteArrayInputStream(FileCopyUtils.copyToByteArray(new File(master.resourceDir + "/" + video.videoUrl))), "video/" + urlSections(urlSections.length - 1), video.videoName)
+
     response.setContentType("video/" + urlSections(urlSections.length - 1))
     try {
       FileCopyUtils.copy(new FileInputStream(new File(master.resourceDir + "/" + video.videoUrl)), response.getOutputStream)
@@ -117,7 +117,7 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
     } catch {
       case e: Exception => logger.error(e.getMessage) // 为了不在控制台输出不影响正常运行的报错
     }
-    
+
     null
   }
 
@@ -153,7 +153,7 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
         }
       }
     }
-
+    video.videoUrl = video.videoName
     val videos = Collections.newBuffer[Video]
     videos += video
     videos ++= updateIndexNo(video)
@@ -163,7 +163,7 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
     } catch {
       case e: Exception => {
         val redirectTo = Handler.mapping.method.getName match {
-          case "save"   => "editNew"
+          case "save" => "editNew"
           case "update" => "edit"
         }
         logger.info("saveAndRedirect failure", e)
@@ -188,7 +188,7 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
       after.indexNo += 1
       indexNo = after.indexNo
     }
-    
+
     afters
   }
 

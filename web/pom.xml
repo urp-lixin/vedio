@@ -2,19 +2,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>net.openurp.lixin.vod</groupId>
-    <artifactId>lixin-vod-parent</artifactId>
+    <groupId>net.openurp.lixin.video</groupId>
+    <artifactId>lixin-video-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>net.openurp.lixin.vod</groupId>
-  <artifactId>lixin-vod-web</artifactId>
+  <groupId>net.openurp.lixin.video</groupId>
+  <artifactId>lixin-video-web</artifactId>
   <packaging>jar</packaging>
-  <name>Web In Vod</name>
+  <name>Web In Video</name>
 
   <dependencies>
     <dependency>
-      <groupId>net.openurp.lixin.vod</groupId>
-      <artifactId>lixin-vod-core</artifactId>
+      <groupId>net.openurp.lixin.video</groupId>
+      <artifactId>lixin-video-core</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

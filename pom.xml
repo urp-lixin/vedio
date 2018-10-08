@@ -6,11 +6,11 @@
     <artifactId>openurp-parent</artifactId>
     <version>0.2.5</version>
   </parent>
-  <groupId>net.openurp.lixin.vod</groupId>
-  <artifactId>lixin-vod-parent</artifactId>
+  <groupId>net.openurp.lixin.video</groupId>
+  <artifactId>lixin-video-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Lixin Vod Parent</name>
+  <name>Lixin Video Parent</name>
 
   <modules>
     <module>adminapp</module>

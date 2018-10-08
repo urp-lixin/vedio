@@ -28,7 +28,7 @@
         
         bg.form.addInput(action.getForm(), "videoIds", ids);
         bg.form.addInput(action.getForm(), "navId", "${nav.id}");
-        bg.form.submit(action.getForm(), "${base}/vodback/recommend/setting", "recommends");
+        bg.form.submit(action.getForm(), "${base}/admin/recommend/setting", "recommends");
       }, "action-new");
     [/@]
     [@b.row]
