@@ -1,6 +1,6 @@
         <div class="col-md-9 m_b_20">
           <h4 class="page-header c_warning">
-            <span class="span_t"><img class="m_r_5" src="${base}/static/images/news.png">新闻动态视频</span>
+            <span class="span_t"><img class="m_r_5" src="${b.static_url("video","images/news.png")}">新闻动态视频</span>
           </h4>
           <div class="xw_list">
             <ul>

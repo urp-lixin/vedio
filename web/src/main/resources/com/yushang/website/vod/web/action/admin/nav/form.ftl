@@ -7,7 +7,7 @@
     [@b.validity]
       $("[name='nav.name']", document.navForm).require().assert(function() {
         var isOk = false;
-        
+
         $.ajax({
           "type": "POST",
           "url": "${b.url("!checkAjax")}",
@@ -21,7 +21,7 @@
             isOk = data.isOk;
           }
         });
-        
+
         return isOk;
       }, "名称已存在！！！");
     [/@]

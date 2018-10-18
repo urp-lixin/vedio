@@ -1,5 +1,5 @@
 [@b.head/]
-  <script src="${base}/static/js/video.js?v=${systemId}"></script>
+  ${b.script("video","js/video.js")}
   [@b.toolbar title="栏目配置"]
     bar.addBack();
   [/@]

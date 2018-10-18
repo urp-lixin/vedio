@@ -4,7 +4,7 @@ ul.menu{
   list-style-type:none;
   margin: 0;
   padding: 0;
-  width: 150px; 
+  width: 150px;
   /*background:#ffffff;*/
 }
 
@@ -14,14 +14,14 @@ ul.menu ul {
   padding: 0;
   width: 148px;
   /*background:#ffffff;*/
-  
+
    border-left:1px #adccea solid;
    border-right:1px #adccea solid;
 }
 
 ul.menu a {
   display: block;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 ul.menu li {
@@ -32,7 +32,7 @@ ul.menu li a.first_menu{
   color: #fff; padding-left:30px;
 }
 ul.menu li.current {
-	background-color : #E0ECFF;
+  background-color : #E0ECFF;
 }
 ul.menu li a:hover {}
 ul.menu li a:focus {border : none;}
@@ -90,7 +90,7 @@ ul.menu li a.active{
         width: 0;
         height: 0;
         border-top: 6px solid transparent;
-        border-bottom: 6px solid transparent; 
+        border-bottom: 6px solid transparent;
         border-right:6px solid rgba(0, 0, 0, 0.6);
         top:50%;
         position:absolute;

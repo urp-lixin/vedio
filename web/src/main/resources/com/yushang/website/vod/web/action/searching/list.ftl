@@ -1,9 +1,12 @@
 [@b.head title=master.name + "视频点播系统"]
   <meta name="description" content="">
   <meta name="author" content="">
-  <script src="${base}/static/js/search.js?v=${systemId}"></script>
-  <script src="${base}/static/js/nav.js?v=${systemId}"></script>
-  <script src="${base}/static/js/recommendsEffect.js?v=${systemId}"></script>
+    <script>
+    beangle.contextPath="${base}"
+  </script>
+  ${b.script("video","js/search.js")}
+  ${b.script("video","js/nav.js")}
+  ${b.script("video","js/recommendsEffect.js")}
 [/@]
 
 [#include "../index/part/head.ftl"/]

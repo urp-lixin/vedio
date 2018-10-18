@@ -10,7 +10,7 @@
           alert("请选择要添加配置的视频记录。");
           return false;
         }
-        
+
         bg.form.addInput(action.getForm(), "videoIds", ids);
         bg.form.submit(action.getForm(), "${base}/admin/wonderful/setting", "wonderfuls");
       }, "action-new");

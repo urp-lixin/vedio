@@ -1,3 +1,21 @@
+/*
+ * OpenURP, Agile University Resource Planning Solution.
+ *
+ * Copyright © 2005, The OpenURP Software.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package com.yushang.website.vod.web.action.admin
 
 import org.beangle.commons.collection.Order
@@ -12,20 +30,20 @@ import com.yushang.website.vod.core.model.Master
 import org.beangle.webmvc.api.annotation.param
 
 class VodBackSupport[T <: Entity[_]] extends RestfulAction[T] {
-  
+
   @ignore
   protected def master: Master = {
     entityDao.getAll(classOf[Master])(0)
   }
-  
+
   override protected def indexSetting(): Unit = {
     put("systemId", System.currentTimeMillis())
     put("master", master)
   }
-  
+
   override protected def getQueryBuilder(): OqlBuilder[T] = {
     indexSetting
-    
+
     val builder: OqlBuilder[T] = OqlBuilder.from(entityName, simpleEntityName)
     populateConditions(builder)
     extraCondition(builder)
@@ -41,11 +59,11 @@ class VodBackSupport[T <: Entity[_]] extends RestfulAction[T] {
   }
 
   protected def extraCondition(builder: OqlBuilder[T]): Unit = {}
-  
+
   @mapping(value = "{id}")
   override def info(@param("id") id: String): View = {
     indexSetting
-    
+
     super.info(id)
   }
 

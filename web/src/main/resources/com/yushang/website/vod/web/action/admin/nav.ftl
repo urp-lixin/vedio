@@ -2,7 +2,7 @@
 [#macro displayFrame appName mainHref="" fixed=true]
 <nav style="margin-top: -20px; margin-bottom: 0px" role="navigation" class="navbar navbar-default">
   <div class="navbar-header">
-    <img src="${base}/static/images/logo_back.png" style="width:50px;height:50px;float: left !important;"/>
+    <img src="${b.static_url('video','images/logo_back.png')}" style="width:50px;height:50px;float: left !important;"/>
     <a onclick="return bg.Go(this,null)" style="height: 20px;" class="navbar-brand" href="${base}/admin/index">${master.name}视频点播系统&nbsp;-&nbsp;后台管理</a>
   </div>
   <div>

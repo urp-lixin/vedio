@@ -1,7 +1,7 @@
       <h3 class="page-header c_warning">
-        <img class="m_r_5" src="${base}/static/images/news.png">精彩瞬间 
+        <img class="m_r_5" src="${b.static_url("video","images/news.png")}">精彩瞬间
       </h3>
-  
+
       <div id="myCarousel" class="carousel slide">
         <div class="carousel-inner">
           [#list wonderfuls as wonderful]

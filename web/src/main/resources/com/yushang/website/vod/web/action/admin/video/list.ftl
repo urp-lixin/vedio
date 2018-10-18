@@ -12,7 +12,7 @@
       [@b.col title="摄影人" property="author"/]
       [@b.col title="时长" property="second"][#assign s = video.second/]${(s / 60)?int}分钟${(s % 60 == 0)?string("", (s / 60 - (s / 60)?int) * 60) + "秒"}[/@]
       [@b.col title="图片" sortable="false"]<image src="${base}/admin/video/image/${video.id}" title="${video.imageName}" width="70" height="70"/>[/@]
-      [#--
+      [#--1
       [@b.col title="视频" sortable="false"]
         <video src="${base}/vodback/video/video/${video.id}?v=${systemId}" width="85" height="85" controls="controls" title="${video.videoName}"/>
       [/@]
