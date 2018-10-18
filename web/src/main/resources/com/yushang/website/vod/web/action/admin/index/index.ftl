@@ -1,7 +1,7 @@
 [@b.head title=master.name + "视频点播系统 - 后台管理"]
   ${b.css("video","nav/menu.css")}
 
-  
+
   <style>
     body, body * {
       font-size: 13px;
@@ -55,7 +55,7 @@
   function displayAppAndMenus(apps,menus){
     addApps(apps,jQuery('#app_nav_bar'));
     addMenus(menus,jQuery('#menu_ul'));
-  
+
     jQuery(function() {
         jQuery("ul.menu li a.p_1").click(function() {
           jQuery("ul.menu li.current").removeClass('current');
@@ -75,7 +75,7 @@
         });
     });
   }
-    
+
   displayAppAndMenus(apps,menus);
 </script>
 [@b.foot/]
