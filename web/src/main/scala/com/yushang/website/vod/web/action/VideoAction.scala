@@ -17,6 +17,10 @@ class VideoAction extends VodSupport with ServletSupport {
     val video = entityDao.get(classOf[Video], id.toLong)
     put("video", video)
 
+    val a = video.videoName.indexOf(".")
+    val suffix = video.videoName.substring(8)
+    put("suffix", suffix)
+
     loadRecommends(Some(video.nav.id))
 
     val videoStat = loadVideoStat(video)
@@ -86,8 +90,7 @@ class VideoAction extends VodSupport with ServletSupport {
     }
     if (ip.equals("0:0:0:0:0:0:0:1")) "127.0.0.1" else ip;
   }
-  
-  
+
   @mapping(value = "badAjax/{id}", view = "videoStat")
   def badAjax(@param("id") id: String): View = {
     val video = entityDao.get(classOf[Video], id.toLong)
