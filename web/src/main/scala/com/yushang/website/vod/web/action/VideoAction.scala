@@ -36,7 +36,7 @@ class VideoAction extends VodSupport with ServletSupport {
     put("video", video)
 
     val a = video.videoName.indexOf(".")
-    val suffix = video.videoName.substring(8)
+    val suffix = video.videoName.substring(a)
     put("suffix", suffix)
 
     loadRecommends(Some(video.nav.id))
