@@ -1,4 +1,7 @@
 [@b.head/]
+<script>
+beangle.contextPath="${base}"
+</script>
   ${b.script("video","js/video.js")}
   [@b.toolbar title="栏目配置"]
     bar.addBack();

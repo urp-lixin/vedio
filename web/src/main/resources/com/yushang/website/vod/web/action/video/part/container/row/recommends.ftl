@@ -4,7 +4,7 @@
             <div class="top" id="bd">
               <ul id="ul">
               [#list recommends as recommend]
-                <li href="${base}/video/${recommend.video.id}"><img src="${base}/video/image/${recommend.video.id}"/><div>${recommend.video.name}</div></li>
+                <li href="${base}/video/${recommend.video.id}"><img src="${base}/video/image/${recommend.video.id}" width="100%"/><div>${recommend.video.name}</div></li>
               [/#list]
               </ul>
             </div>
