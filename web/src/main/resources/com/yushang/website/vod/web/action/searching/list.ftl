@@ -6,7 +6,7 @@
   </script>
   ${b.script("video","js/search.js")}
   ${b.script("video","js/nav.js")}
-  ${b.script("video","js/recommendsEffect.js")}
+  [#--${b.script("video","js/recommendsEffect.js")}--]
 [/@]
 
 [#include "../index/part/head.ftl"/]
