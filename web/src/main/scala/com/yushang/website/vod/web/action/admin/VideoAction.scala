@@ -93,10 +93,10 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
       case Some(part) =>
         val video: File = new File(master.resourceDir + "/temp/" + name)
         if (video.getParentFile.exists()) {
-          get("videoUrl") match {
-            case Some(videoUrl) =>
-              if (videoUrl.trim.length() > 0) {
-                new File(master.resourceDir + "/temp/" + videoUrl).delete
+          get("localPath") match {
+            case Some(localPath) =>
+              if (localPath.trim.length() > 0) {
+                new File(master.resourceDir + "/temp/" + localPath).delete
               }
             case None =>
           }
@@ -109,28 +109,28 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
         FileCopyUtils.copy(FileCopyUtils.copyToByteArray(part.getInputStream), video)
 
         put("videoName", part.getSubmittedFileName)
-        put("videoUrl", name)
+        put("localPath", name)
       case None =>
     }
 
     forward()
   }
 
-  @mapping("videoPreview/{videoUrl}")
-  def videoPreview(@param("videoUrl") videoUrl: String, @param("videoName") videoName: String): View = {
+  @mapping("videoPreview/{localPath}")
+  def videoPreview(@param("localPath") localPath: String, @param("videoName") videoName: String): View = {
     val urlSections = Strings.split(videoName, ".")
-    Stream(new ByteArrayInputStream(FileCopyUtils.copyToByteArray(new File(master.resourceDir + "/temp/" + videoUrl))), "application/x-shockwave-flash", videoName)
+    Stream(new ByteArrayInputStream(FileCopyUtils.copyToByteArray(new File(master.resourceDir + "/temp/" + localPath))), "application/x-shockwave-flash", videoName)
   }
 
   @mapping("video/{id}")
   def video(@param("id") id: String): View = {
     val video = entityDao.get(classOf[Video], id.toLong)
     val urlSections = Strings.split(video.videoName, ".")
-    //    Stream(new ByteArrayInputStream(FileCopyUtils.copyToByteArray(new File(master.resourceDir + "/" + video.videoUrl))), "video/" + urlSections(urlSections.length - 1), video.videoName)
+    //    Stream(new ByteArrayInputStream(FileCopyUtils.copyToByteArray(new File(master.resourceDir + "/" + video.localPath.get))), "video/" + urlSections(urlSections.length - 1), video.videoName)
 
     response.setContentType("video/" + urlSections(urlSections.length - 1))
     try {
-      FileCopyUtils.copy(new FileInputStream(new File(master.resourceDir + "/" + video.videoUrl)), response.getOutputStream)
+      FileCopyUtils.copy(new FileInputStream(new File(master.resourceDir + "/" + video.localPath.get)), response.getOutputStream)
       response.getOutputStream.flush
     } catch {
       case e: Exception => logger.error(e.getMessage) // 为了不在控制台输出不影响正常运行的报错
@@ -147,13 +147,14 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
       FileCopyUtils.copy(tempImg, image)
       tempImg.delete
     }
-    val tempV: File = new File(master.resourceDir + "/temp/" + video.videoUrl)
-    if (tempV.exists()) {
-      val vd: File = new File(master.resourceDir + "/" + video.videoUrl)
-      FileCopyUtils.copy(tempV, vd)
-      tempV.delete
-    }
-
+    video.localPath.foreach(localPath => {
+      val tempV: File = new File(master.resourceDir + "/temp/" + localPath)
+      if (tempV.exists()) {
+        val vd: File = new File(master.resourceDir + "/" + localPath)
+        FileCopyUtils.copy(tempV, vd)
+        tempV.delete
+      }
+    })
     if (video.persisted) {
       val dbVideo = entityDao.get(classOf[Video], video.id)
 
@@ -164,14 +165,18 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
           hisImg.delete
         }
       }
-      if (video.videoUrl != dbVideo.videoUrl) {
-        val hisV: File = new File(master.resourceDir + "/" + dbVideo.videoUrl)
-        if (hisV.exists()) {
-          hisV.delete
-        }
-      }
+      video.localPath.foreach(vLocalPath => {
+        dbVideo.localPath.foreach(dbLocalPath => {
+          if (vLocalPath != dbLocalPath) {
+            val hisV: File = new File(master.resourceDir + "/" + dbLocalPath)
+            if (hisV.exists()) {
+              hisV.delete
+            }
+          }
+        })
+      })
     }
-    video.videoUrl = video.videoName
+    video.videoName = video.name
     val videos = Collections.newBuffer[Video]
     videos += video
     videos ++= updateIndexNo(video)
@@ -217,7 +222,7 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
       for (video <- videos) {
         println(video.imageUrl)
         new File(master.resourceDir + "/" + video.imageUrl).delete
-        new File(master.resourceDir + "/" + video.videoUrl).delete
+        new File(master.resourceDir + "/" + video.localPath.get).delete
       }
       redirect("search", "info.remove.success")
     } catch {

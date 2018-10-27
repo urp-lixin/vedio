@@ -1,7 +1,6 @@
 [@b.head title=master.name + "视频点播系统 - 后台管理"]
   ${b.css("video","nav/menu.css")}
 
-
   <style>
     body, body * {
       font-size: 13px;

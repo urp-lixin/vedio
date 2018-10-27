@@ -5,7 +5,11 @@
           <div class="xw_list">
             <ul>
             [#list videos as video]
-              <li><a class="col-xs-8" href="${base}/video/${video.id}">${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
+              [#if video.wwwUrl??]
+                <li><a class="col-xs-8" href="${video.wwwUrl}" target=_blank>${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
+              [#else]
+                <li><a class="col-xs-8" href="${base}/video/${video.id}">${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
+              [/#if]
             [/#list]
             </ul>
           </div>

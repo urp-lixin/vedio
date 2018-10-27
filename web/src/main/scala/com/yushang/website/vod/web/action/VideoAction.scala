@@ -35,9 +35,13 @@ class VideoAction extends VodSupport with ServletSupport {
     val video = entityDao.get(classOf[Video], id.toLong)
     put("video", video)
 
-    val a = video.videoName.indexOf(".")
-    val suffix = video.videoName.substring(a)
-    put("suffix", suffix)
+    if (video.videoUrl == None) {
+      video.localPath.foreach(localPath => {
+        val a = localPath.indexOf(".")
+        val suffix = localPath.substring(a)
+        put("suffix", suffix)
+      })
+    }
 
     loadRecommends(Some(video.nav.id))
 

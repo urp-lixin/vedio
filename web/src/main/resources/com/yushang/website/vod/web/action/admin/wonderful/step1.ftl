@@ -20,11 +20,10 @@
       [@b.col title="栏目" property="nav.name"/]
       [@b.col title="标题" property="name"/]
       [@b.col title="摄影人" property="author"/]
-      [@b.col title="时长" property="second"][#assign s = video.second/]${(s / 60)?int}分钟${(s % 60 == 0)?string("", (s / 60 - (s / 60)?int) * 60) + "秒"}[/@]
       [@b.col title="图片" sortable="false"]<image src="${base}/admin/video/image/${video.id}" title="${video.imageName}" width="70" height="70"/>[/@]
       [#--
       [@b.col title="视频" sortable="false"]
-        <video src="${base}/admin/video/video/${video.id}" width="85" height="85" controls="controls" title="${video.videoName}"/>
+        <video src="${base}/admin/video/video/${video.id}" width="85" height="85" controls="controls" title="${video.name}"/>
       [/@]
       --]
       [@b.col title="发布日期" property="publishedAt"]${video.publishedAt?string("yyyy-MM-dd")}[/@]

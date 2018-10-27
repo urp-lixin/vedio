@@ -6,7 +6,7 @@
       <td class="index_view">
         [@b.form title="ui.searchForm" name="searchForm" action="!search" target="videos" theme="search"]
           [@b.select label="栏目" name="video.nav.id" items=navs?sort_by(["indexNo"]) empty="..."/]
-          [@b.textfields names="video.name;标题,video.author;摄影人,video.description;内容,video.second;时长(秒),video.videoName;文件名"/]
+          [@b.textfields names="video.name;标题,video.author;摄影人,video.description;内容"/]
           [@b.datepicker label="发布日期" name="video.publishedAt"/]
         [/@]
       </td>

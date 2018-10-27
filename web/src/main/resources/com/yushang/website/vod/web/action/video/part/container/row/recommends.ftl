@@ -4,7 +4,11 @@
             <div class="top" id="bd">
               <ul id="ul">
               [#list recommends as recommend]
-                <li href="${base}/video/${recommend.video.id}"><img src="${base}/video/image/${recommend.video.id}" width="100%"/><div>${recommend.video.name}</div></li>
+                [#if recommend.video.wwwUrl??]
+                  <li><a href="${recommend.video.wwwUrl}" target=_blank><img src="${base}/video/image/${recommend.video.id}" width="100%"/></a><div>${recommend.video.name}</div></li>
+                [#else]
+                  <li><a href="${base}/video/${recommend.video.id}"><img src="${base}/video/image/${recommend.video.id}" width="100%"/></a><div>${recommend.video.name}</div></li>
+                [/#if]
               [/#list]
               </ul>
             </div>

@@ -9,7 +9,13 @@
           <div class="item[#if wonderful_index == 0] active[/#if]">
             <div class="row">
             [/#if]
-              <div class="col-sm-4 jcsj"><a href="${base}/video/${wonderful.video.id}"><img src="${base}/video/image/${wonderful.video.id}" width="100%" alt=""><div class="jcsj_s">${wonderful.video.name}</div></a></div>
+              <div class="col-sm-4 jcsj">
+                [#if wonderful.video.wwwUrl??]
+                  <li><a href="${wonderful.video.wwwUrl}" target=_blank><img src="${base}/video/image/${wonderful.video.id}" width="100%"/></a><div class="jcsj_s">${wonderful.video.name}</div></li>
+                [#else]
+                  <li><a href="${base}/video/${wonderful.video.id}"><img src="${base}/video/image/${wonderful.video.id}" width="100%" alt=""></a><div class="jcsj_s">${wonderful.video.name}</div></li>
+                [/#if]
+              </div>
             [#if wonderful_index % 3 == 2 || !wonderful_has_next]
             </div>
           </div>

@@ -12,8 +12,12 @@
             <h4 class="news_t">新闻动态</h4>
             <ul class="news_list">
               [#if videos?size gt 1]
-                [#list 1..videos?size - 1 as i]
-              <li><a class="col-xs-8" href="${base}/video/${videos[i].id}">${videos[i].name}</a><small class="col-xs-4 text-right">${videos[i].publishedAt?string("yyyy-MM-dd")}</small></li>
+                [#list videos as video]
+                  [#if video.wwwUrl??]
+                    <li><a class="col-xs-8" href="${video.wwwUrl}" target=_blank>${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
+                  [#else]
+                    <li><a class="col-xs-8" href="${base}/video/${video.id}">${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
+                  [/#if]
                 [/#list]
               [/#if]
             </ul>

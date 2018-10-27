@@ -30,17 +30,19 @@ class Video extends VideoIndexNo with Named {
 
   var description: String = _
 
-  var second: Int = _
-
   var imageName: String = _
 
   var imageUrl: String = _
 
   var videoName: String = _
 
-  var videoUrl: String = _
+  var videoUrl: Option[String] = null
 
   var publishedAt: Date = _
 
   var nav: Nav = _
+
+  var wwwUrl: Option[String] = null
+
+  var localPath: Option[String] = null
 }

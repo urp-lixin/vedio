@@ -16,7 +16,6 @@ beangle.contextPath="${base}"
     [@b.textfield label="标题" name="video.name" value=(video.name)! required="true" maxlength="100" style=styleHTML/]
     [@b.textfield label="摄影人" name="video.author" value=(video.author)! required="true" maxlength="100" style=styleHTML/]
     [@b.textarea label="内容" name="video.description" value=(video.description?html)! required="true" style=styleHTML/]
-    [@b.textfield label="时长（秒）" name="video.second" value=video.persisted?string(video.second, "") required="true" maxlength="10" check="match('integer').greaterThan(0)" style=styleHTML/]
     [@b.field label="图片" required="true"]
       <table>
         <tr>
@@ -38,12 +37,9 @@ beangle.contextPath="${base}"
         return document.getElementById("imageNone") && document.getElementById("imageNone").innerHTML;
       }, "请填设图片");
     [/@]
-    [@b.textfield label="视频名称" name="video.videoName" value=(video.videoName)! required="true" maxlength="1000" style=styleHTML comment="请将该视频放到服务器video文件夹下"/]
-    [#if video.persisted]
-    [@b.field label="视频"]
-       <video src="${base}/admin/video/video/${video.id}" width="85" height="85" controls="controls" title="${video.videoName}"/>
-    [/@]
-    [/#if]
+    [@b.textfield label="服务器视频名称" name="video.localPath" value=(video.localPath)! maxlength="1000" style=styleHTML comment="请将该视频放到服务器video文件夹下"/]
+    [@b.textfield label="外部视频地址" name="video.videoUrl" value=(video.videoUrl)! maxlength="1000" style=styleHTML/]
+    [@b.textfield label="视频网页地址" name="video.wwwUrl" value=(video.wwwUrl)! maxlength="1000" style=styleHTML /]
     [@b.datepicker label="发布日期" name="video.publishedAt" value=(video.publishedAt?string("yyyy-MM-dd"))! required="true" style=styleHTML/]
     [@b.textfield label="优先级" name="video.indexNo" value=(video.indexNo)! required="true" maxlength="100" check="match('integer').greaterThan(0)" style=styleHTML/]
     [@b.formfoot]
