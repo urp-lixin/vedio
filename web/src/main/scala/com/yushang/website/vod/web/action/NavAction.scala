@@ -37,19 +37,19 @@ class NavAction extends VodSupport {
 
     val pageNo = get("pageNo") match {
       case Some(pageNo) => pageNo.toInt
-      case None         => 1
+      case None => 1
     }
 
     val builder = OqlBuilder.from(classOf[Video], "video")
     if ("more" != id) {
       builder.where("video.nav.id = :navId", id.toLong)
+      put("nav", entityDao.get(classOf[Nav], id.toLong))
     }
     builder.orderBy("video.indexNo")
     builder.limit(pageNo, 15)
     put("videos", entityDao.search(builder))
 
     loadRecommends(if ("more" == id) None else Some(id.toLong))
-    put("nav",entityDao.get(classOf[Nav], id.toLong))
     forward()
   }
 }

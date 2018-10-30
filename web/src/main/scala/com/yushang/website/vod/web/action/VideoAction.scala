@@ -47,16 +47,19 @@ class VideoAction extends VodSupport with ServletSupport {
 
     val videoStat = loadVideoStat(video)
 
-    val ip = getRemoteHost
+    videoStat.views += 1
+    entityDao.saveOrUpdate(videoStat)
 
-    if (null == videoStat.info(ip)) {
-      if (!videoStat.persisted) {
-        videoStat.video = video
-      }
-      videoStat.addIp(ip)
+    //    val ip = getRemoteHost
 
-      entityDao.saveOrUpdate(videoStat)
-    }
+    //    if (null == videoStat.info(ip)) {
+    //      if (!videoStat.persisted) {
+    //        videoStat.video = video
+    //      }
+    //      videoStat.addIp(ip)
+    //
+    //      entityDao.saveOrUpdate(videoStat)
+    //    }
 
     forward()
   }
@@ -85,17 +88,19 @@ class VideoAction extends VodSupport with ServletSupport {
     val video = entityDao.get(classOf[Video], id.toLong)
 
     val videoStat = loadVideoStat(video)
+    //
+    //    val ip = getRemoteHost
+    //
+    //    var info = videoStat.info(ip)
+    //    if (!info.give) {
+    //      videoStat.good += 1
+    //      info.give = true
+    //
+    //      entityDao.saveOrUpdate(videoStat)
+    //    }
 
-    val ip = getRemoteHost
-
-    var info = videoStat.info(ip)
-    if (!info.give) {
-      videoStat.good += 1
-      info.give = true
-
-      entityDao.saveOrUpdate(videoStat)
-    }
-
+    videoStat.good += 1
+    entityDao.saveOrUpdate(videoStat)
     forward()
   }
 
@@ -119,15 +124,17 @@ class VideoAction extends VodSupport with ServletSupport {
 
     val videoStat = loadVideoStat(video)
 
-    val ip = getRemoteHost
-
-    var info = videoStat.info(ip)
-    if (!info.give) {
-      videoStat.bad += 1
-      info.give = true
-
-      entityDao.saveOrUpdate(videoStat)
-    }
+    //    val ip = getRemoteHost
+    //
+    //    var info = videoStat.info(ip)
+    //    if (!info.give) {
+    //      videoStat.bad += 1
+    //      info.give = true
+    //
+    //      entityDao.saveOrUpdate(videoStat)
+    //    }
+    videoStat.bad += 1
+    entityDao.saveOrUpdate(videoStat)
 
     forward()
   }
