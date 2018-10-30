@@ -19,7 +19,7 @@
       <td class="content">${video.name}</td>
     </tr>
     <tr>
-      <td class="title">摄影人</td>
+      <td class="title">来源</td>
       <td class="content">${video.author}</td>
     </tr>
     <tr>

@@ -35,7 +35,7 @@
       [@b.boxcol/]
       [@b.col title="栏目" property="nav.name"/]
       [@b.col title="标题" property="name"/]
-      [@b.col title="摄影人" property="author"/]
+      [@b.col title="来源" property="author"/]
       [@b.col title="图片" sortable="false"]<image src="${base}/admin/video/image/${video.id}" title="${video.imageName}" width="70" height="70"/>[/@]
       [@b.col title="发布日期" property="publishedAt"]${video.publishedAt?string("yyyy-MM-dd")}[/@]
       [@b.col title="优先级" property="indexNo" width="50px"/]

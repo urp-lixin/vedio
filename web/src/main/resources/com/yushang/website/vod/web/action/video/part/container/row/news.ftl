@@ -1,7 +1,7 @@
         <div class="col-md-9 m_b_20">
           <h4 class="m_t_30">${video.name?html}</h4>
           <div class="video_s">${video.description?html}</div>
-          <div class="video_bz"><span class="m_r_10">摄影人：${video.author}</span><span class="c_999 pull-right">发布时间：${video.publishedAt?string("yyyy-MM-dd")}</span></div>
+          <div class="video_bz"><span class="m_r_10">来源：${video.author}</span><span class="c_999 pull-right">发布时间：${video.publishedAt?string("yyyy-MM-dd")}</span></div>
           <script src='https://content.jwplatform.com/libraries/i511f6Xb.js'></script>
           <script>jwplayer.key='YOUR_KEY';</script>
             <div id="player">Loading the player...</div>

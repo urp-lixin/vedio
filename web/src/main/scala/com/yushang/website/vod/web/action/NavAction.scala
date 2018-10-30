@@ -49,7 +49,7 @@ class NavAction extends VodSupport {
     put("videos", entityDao.search(builder))
 
     loadRecommends(if ("more" == id) None else Some(id.toLong))
-
+    put("nav",entityDao.get(classOf[Nav], id.toLong))
     forward()
   }
 }

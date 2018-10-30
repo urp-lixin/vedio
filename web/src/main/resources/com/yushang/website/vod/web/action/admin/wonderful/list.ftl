@@ -8,7 +8,7 @@
       [@b.boxcol/]
       [@b.col title="视频栏目" property="video.nav.name"/]
       [@b.col title="视频标题" property="video.name"]<a href="javascript:bg.form.submit(action.getForm(), '${base}/admin/video/${wonderful.video.id}', 'wonderful')">${wonderful.video.name?html}</a>[/@]
-      [@b.col title="视频摄影人" property="video.author"/]
+      [@b.col title="视频来源" property="video.author"/]
       [@b.col title="视频图片" sortable="false"]<image src="${base}/admin/video/image/${wonderful.video.id}" title="${wonderful.video.imageName}" width="70" height="70"/>[/@]
       [#--
       [@b.col title="视频" sortable="false"]

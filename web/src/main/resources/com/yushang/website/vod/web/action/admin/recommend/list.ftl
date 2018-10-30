@@ -8,7 +8,7 @@
       [@b.boxcol/]
       [@b.col title="视频栏目" property="video.nav.name"/]
       [@b.col title="视频标题" property="video.name"]<a href="javascript:bg.form.submit(action.getForm(), '${base}/vodback/video/${recommend.video.id}', 'recommend')">${recommend.video.name?html}</a>[/@]
-      [@b.col title="视频摄影人" property="video.author"/]
+      [@b.col title="视频来源" property="video.author"/]
       [@b.col title="视频图片" sortable="false"]<image src="${base}/admin/video/image/${recommend.video.id}" title="${recommend.video.imageName}" width="70" height="70"/>[/@]
       [@b.col title="视频发布日期" property="video.publishedAt"]${recommend.video.publishedAt?string("yyyy-MM-dd")}[/@]
       [@b.col title="优先级" property="indexNo" width="50px"/]

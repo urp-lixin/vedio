@@ -14,8 +14,8 @@ beangle.contextPath="${base}"
       [@b.select label="栏目" name="video.nav.id" items=navs?sort_by(["indexNo"]) empty="..." value=(video.nav.id)! required="true" style=styleHTML/]
     [/#if]
     [@b.textfield label="标题" name="video.name" value=(video.name)! required="true" maxlength="100" style=styleHTML/]
-    [@b.textfield label="摄影人" name="video.author" value=(video.author)! required="true" maxlength="100" style=styleHTML/]
-    [@b.textarea label="内容" name="video.description" value=(video.description?html)! required="true" style=styleHTML/]
+    [@b.textfield label="来源" name="video.author" value=(video.author)! required="true" maxlength="100" style=styleHTML/]
+    [@b.textarea label="简介" name="video.description" value=(video.description?html)! required="true" style=styleHTML/]
     [@b.field label="图片" required="true"]
       <table>
         <tr>
