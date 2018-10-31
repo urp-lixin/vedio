@@ -1,5 +1,5 @@
   <div class="container top_h">
-    <div class="row"><div class="col-xs-12 text-right"><a href="http://www.sfu.edu.cn">学校主页</a></div></div>
+    <div class="row"><div class="col-xs-12 text-right"><a href="http://www.lixin.edu.cn" target="_blank">学校主页</a></div></div>
     <div class="row m_b_35">
       <div class="col-sm-6"><img class="logo" src='${b.static_url("video","images/logo.png")}'></div>
       <form name="vodSearchForm" method="post" action="${b.url("searching")}/" target="_self" onsubmit="return false;">
