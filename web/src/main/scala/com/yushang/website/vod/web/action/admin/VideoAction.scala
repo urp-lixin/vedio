@@ -129,7 +129,6 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
     val urlSections = Strings.split(video.videoName, ".")
     response.setContentType("video/" + urlSections(urlSections.length - 1))
     var filePath = (master.resourceDir + File.separator + video.localPath.get)
-    filePath = "C:\\Users\\duant\\tmp\\1539843689460"
     val file = new File(filePath)
     if (!checkSendFile(file)) {
       try {
