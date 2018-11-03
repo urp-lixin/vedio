@@ -33,10 +33,6 @@ class DefaultMapping extends MappingModule {
     bind[Video]
 
     bind[VideoStat]
-//    .on(e => declare(
-//      e.statInfoes is depends("videoStat")))
-
-//    bind[VideoStatInfo]
 
     bind[Wonderful]
 

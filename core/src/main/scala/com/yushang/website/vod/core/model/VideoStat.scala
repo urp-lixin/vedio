@@ -29,31 +29,9 @@ class VideoStat extends LongId {
 
   var video: Video = _
 
-//  var statInfoes: Buffer[VideoStatInfo] = Collections.newBuffer[VideoStatInfo]
-
   var good: Int = _
 
   var bad: Int = _
 
   var views: Int = _
-
-//  def addIp(ipAddr: String): Unit = {
-//    val statInfo = new VideoStatInfo
-//    statInfo.videoStat = this
-//    statInfo.ip = ipAddr
-//    statInfoes += statInfo
-//  }
-//
-//  def info(ip: String): VideoStatInfo = {
-//    var result: VideoStatInfo = null
-//    breakable {
-//      for (statInfo <- statInfoes) {
-//        if (statInfo.ip == ip) {
-//          result = statInfo
-//          break
-//        }
-//      }
-//    }
-//    result
-//  }
 }
