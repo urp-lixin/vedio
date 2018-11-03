@@ -127,19 +127,33 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
   def video(@param("id") id: String): View = {
     val video = entityDao.get(classOf[Video], id.toLong)
     val urlSections = Strings.split(video.videoName, ".")
-    //    Stream(new ByteArrayInputStream(FileCopyUtils.copyToByteArray(new File(master.resourceDir + "/" + video.localPath.get))), "video/" + urlSections(urlSections.length - 1), video.videoName)
-
     response.setContentType("video/" + urlSections(urlSections.length - 1))
-    try {
-      FileCopyUtils.copy(new FileInputStream(new File(master.resourceDir + "/" + video.localPath.get)), response.getOutputStream)
-      response.getOutputStream.flush
-    } catch {
-      case e: Exception => logger.error(e.getMessage) // 为了不在控制台输出不影响正常运行的报错
+    var filePath = (master.resourceDir + File.separator + video.localPath.get)
+    filePath = "C:\\Users\\duant\\tmp\\1539843689460"
+    val file = new File(filePath)
+    if (!checkSendFile(file)) {
+      try {
+        FileCopyUtils.copy(new FileInputStream(file), response.getOutputStream)
+        response.getOutputStream.flush
+      } catch {
+        case e: Exception => logger.error(e.getMessage) // 为了不在控制台输出不影响正常运行的报错
+      }
     }
-
     null
   }
 
+  private def checkSendFile(file: File): Boolean = {
+    val req = request
+    val res = response
+    if (file.exists() && req.getClass.getName == "org.apache.catalina.connector.RequestFacade"
+      && res.getClass.getName == "org.apache.catalina.connector.ResponseFacade") {
+      req.setAttribute("org.apache.tomcat.sendfile.support", java.lang.Boolean.TRUE)
+      req.setAttribute("org.apache.tomcat.sendfile.filename", file.getCanonicalPath)
+      true
+    } else {
+      false
+    }
+  }
   override protected def saveAndRedirect(video: Video): View = {
     // 清理临时资源
     val tempImg: File = new File(master.resourceDir + "/temp/" + video.imageUrl)

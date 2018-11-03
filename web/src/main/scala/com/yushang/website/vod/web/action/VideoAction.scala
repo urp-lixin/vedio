@@ -34,7 +34,6 @@ class VideoAction extends VodSupport with ServletSupport {
 
     val video = entityDao.get(classOf[Video], id.toLong)
     put("video", video)
-
     if (video.videoUrl == None) {
       video.localPath.foreach(localPath => {
         val a = localPath.indexOf(".")
@@ -42,31 +41,17 @@ class VideoAction extends VodSupport with ServletSupport {
         put("suffix", suffix)
       })
     }
-
     loadRecommends(Some(video.nav.id))
-
     val videoStat = loadVideoStat(video)
-
     videoStat.views += 1
     entityDao.saveOrUpdate(videoStat)
-
-    //    val ip = getRemoteHost
-
-    //    if (null == videoStat.info(ip)) {
-    //      if (!videoStat.persisted) {
-    //        videoStat.video = video
-    //      }
-    //      videoStat.addIp(ip)
-    //
-    //      entityDao.saveOrUpdate(videoStat)
-    //    }
-
     forward()
   }
 
   private def loadVideoStat(video: Video): VideoStat = {
     val videoStats = entityDao.search(OqlBuilder.from(classOf[VideoStat], "videoStat").where("videoStat.video = :video", video))
     val videoStat = if (videoStats.isEmpty) new VideoStat else videoStats(0)
+    videoStat.video = video
     put("videoStat", videoStat)
     videoStat
   }
@@ -86,19 +71,7 @@ class VideoAction extends VodSupport with ServletSupport {
   @mapping(value = "goodAjax/{id}", view = "videoStat")
   def goodAjax(@param("id") id: String): View = {
     val video = entityDao.get(classOf[Video], id.toLong)
-
     val videoStat = loadVideoStat(video)
-    //
-    //    val ip = getRemoteHost
-    //
-    //    var info = videoStat.info(ip)
-    //    if (!info.give) {
-    //      videoStat.good += 1
-    //      info.give = true
-    //
-    //      entityDao.saveOrUpdate(videoStat)
-    //    }
-
     videoStat.good += 1
     entityDao.saveOrUpdate(videoStat)
     forward()
