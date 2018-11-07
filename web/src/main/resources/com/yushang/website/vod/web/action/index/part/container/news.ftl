@@ -10,13 +10,13 @@
         <div class="col-md-4">
           <div class="well p_no">
             <h4 class="news_t">新闻动态</h4>
-            <ul class="news_list">
+            <ul class="news_list" style="padding-left: 20px;">
               [#if videos?size gt 1]
                 [#list videos as video]
                   [#if video.wwwUrl??]
-                    <li><a class="col-xs-8" href="${video.wwwUrl}" target=_blank>${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
+                    <li><a class="col-xs-8" href="${video.wwwUrl}" style="padding-left: 5px;" target=_blank>${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
                   [#else]
-                    <li><a class="col-xs-8" href="${base}/video/${video.id}">${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
+                    <li><a class="col-xs-8" href="${base}/video/${video.id}" style="padding-left: 5px;">${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
                   [/#if]
                 [/#list]
               [/#if]
