@@ -32,6 +32,8 @@ import org.springframework.util.FileCopyUtils
 import com.yushang.website.vod.core.model.{ Nav, Video }
 import javax.servlet.http.Part
 import com.yushang.website.vod.core.model.VideoStat
+import com.yushang.website.vod.core.model.Recommend
+import com.yushang.website.vod.core.model.Wonderful
 
 class VideoAction extends VodBackSupport[Video] with ServletSupport {
 
@@ -200,7 +202,7 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
     } catch {
       case e: Exception => {
         val redirectTo = Handler.mapping.method.getName match {
-          case "save"   => "editNew"
+          case "save" => "editNew"
           case "update" => "edit"
         }
         logger.info("saveAndRedirect failure", e)
@@ -233,7 +235,11 @@ class VideoAction extends VodBackSupport[Video] with ServletSupport {
   override protected def removeAndRedirect(videos: Seq[Video]): View = {
     try {
       val stats = entityDao.findBy(classOf[VideoStat], "video", videos)
+      val recommends = entityDao.findBy(classOf[Recommend], "video", videos)
+      val wonderfuls = entityDao.findBy(classOf[Wonderful], "video", videos)
       remove(stats)
+      remove(recommends)
+      remove(wonderfuls)
       remove(videos)
       for (video <- videos) {
         new File(master.resourceDir + "/" + video.imageUrl).delete

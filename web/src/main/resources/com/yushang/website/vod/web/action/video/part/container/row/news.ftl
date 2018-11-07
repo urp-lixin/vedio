@@ -4,7 +4,7 @@
   ${b.script('video','js/jwplayer.js')}
         <div class="col-md-9 m_b_20">
           <h4 style="text-align:center" class="m_t_30">${video.name?html}</h4>
-          <div class="video_bz" style="text-align:center"><span >${video.publishedAt?string("yyyy年MM月dd日hh:mm")}</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span >来源：${video.author}</span></div>
+          <div class="video_bz" style="text-align:center"><span >${video.publishedAt?string("yyyy年MM月dd日")}</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span >来源：${video.author}</span></div>
           <!-- <script src='https://content.jwplatform.com/libraries/i511f6Xb.js'></script>-->
           <script>jwplayer.key='YOUR_KEY';</script>
             <div id="player">Loading the player...</div>
@@ -37,5 +37,5 @@
               <span class=" col-xs-12 col-sm-4 text-right"><span><img class=" p_relative p_img01" src="${b.static_url('video','images/fwl.png')}" width="24" /></span><span>${(videoStat.views)!0}</span></span>
             </div>
           </div>
-          <div class="video_s"><h4><strong><u>视频介绍：</u></strong></h4>${video.description?html}</div>
+          <div class="video_s"><h4 style="border-bottom: 1px dotted #000000"><strong style="border-bottom: 2px solid #9e7e33">视频介绍</strong></h4>${video.description?html}</div>
         </div>

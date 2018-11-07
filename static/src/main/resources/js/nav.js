@@ -1,6 +1,7 @@
 $(function() {
   function navs() {
-    var m = 6;
+//    var m = 6;
+    var m = 20;
     
     var normalObj = $(".navbar-nav");
     var moreObj = null;

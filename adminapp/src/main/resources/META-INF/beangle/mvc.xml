@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <mvc>
   <static>
-    <bundle name="video" version="0.0.1"/>
+    <bundle name="video" version="0.0.2"/>
   </static>
 </mvc>
