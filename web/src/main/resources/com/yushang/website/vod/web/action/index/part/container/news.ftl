@@ -14,9 +14,9 @@
               [#if videos?size gt 1]
                 [#list videos as video]
                   [#if video.wwwUrl??]
-                    <li><a class="col-xs-8" href="${video.wwwUrl}" style="padding-left: 5px;" target=_blank>${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
+                    <li><a class="col-xs-8" href="${video.wwwUrl}" style="padding-left: 2px;" target=_blank>${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
                   [#else]
-                    <li><a class="col-xs-8" href="${base}/video/${video.id}" style="padding-left: 5px;">${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
+                    <li><a class="col-xs-8" href="${base}/video/${video.id}" style="padding-left: 2px;">${video.name?html}</a><small class="col-xs-4 text-right">${video.publishedAt?string("yyyy-MM-dd")}</small></li>
                   [/#if]
                 [/#list]
               [/#if]

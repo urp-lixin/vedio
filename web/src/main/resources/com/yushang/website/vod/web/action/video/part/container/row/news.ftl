@@ -5,8 +5,15 @@
         <div class="col-md-9 m_b_20">
           <h4 style="text-align:center" class="m_t_30">${video.name?html}</h4>
           <div class="video_bz" style="text-align:center"><span >${video.publishedAt?string("yyyy年MM月dd日")}</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span >来源：${video.author}</span></div>
+          <!--视频区域start-->
+          [#if video.videoUrl ??]
+            <div class="m_t_15"><video src="${video.videoUrl!}" width="100%" controls="controls" autoplay="autoplay" title="${video.videoName}"/></div>
+          [#elseif video.localPath ??]
+            <div class="m_t_15"><video src="${base}/video/video/${video.id}" width="100%" controls="controls" autoplay="autoplay" title="${video.videoName}"/></div>
+          [/#if]
+          <!--视频区域end-->
           <!-- <script src='https://content.jwplatform.com/libraries/i511f6Xb.js'></script>-->
-          <script>jwplayer.key='YOUR_KEY';</script>
+          <!-- <script>jwplayer.key='YOUR_KEY';</script>
             <div id="player">Loading the player...</div>
 
             [#if video.videoUrl ??]
@@ -25,8 +32,7 @@
                   volume: 10
                 });
             </script>
-            [/#if]
-          <!--视频区域end-->
+            [/#if]-->
           <div class="sp_gn">
             <div class="row">
               <span class="col-sm-8 col-xs-12">
